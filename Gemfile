@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'momentjs-rails'
 gem 'autoprefixer-rails' 
 gem 'bootstrap-table-rails'
 gem 'devise_security_extension'

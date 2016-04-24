@@ -1,8 +1,14 @@
 class TransactionOnAccountsController < ApplicationController
+   
+  def index
+    debugger
+  end
+
   def new
   end
 
   def show
+   debugger
   end
 
   def create

@@ -1,48 +1,58 @@
-<%= @account.inspect %>
-<%= @account.transaction_on_account.first.value %>
-
-<%= simple_form_for @actual_transaction=TransactionOnAccount.new, :url => account_transaction_on_accounts_path(@account, @actual_transaction) do |f| %>
- <h3>Add new Transaction</h3>
-
-        <div class="form-group">
-          <%= f.label :category %>
-          <%= f.text_field :category, class: 'form-control', :required => true %>
-        </div>
-        <div class="form-group">
-          <%= f.label :value %>
-          <%= f.number_field :value, class: 'form-control', :step => 'any', :required => true %>
-        </div>
-        <div class="form-group">
-          <%= f.label :reason %>
-          <%= f.text_field :reason, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :date %>
-          <%= f.text_field :date, class: 'dp', :data => {:provide => "datepicker"}, :required => true %>
-        </div>
-
-        <%= f.submit 'Add new transaction', :class => 'btn btn-success' %>
+<h1 style="text-align:center;">Actual Account</h1>
+    <%= simple_form_for(@account) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :notifications %>
+      <%= f.check_box :notifications, class: 'form-control' %>
+      <%= f.label :critic_value %>
+      <%= f.text_field :critic_value, class: 'form-control' %>
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
 
-<%= simple_form_for @actual_transaction=TransactionOnAccount.new, :url => account_transaction_on_accounts_path(@account, @actual_transaction) do |f| %>
- <h3>Add new Transaction</h3>
+<%= simple_form_for :asa, :url => url_for(:action => 'index', :controller => 'account_transaction_on_accounts_path'), :method => 'post' do |f|  %>
+  <%= f.input :email %>
+  <%= f.input :as %>
+  <%= f.input :password %>
+  <%= f.button :submit, "Sign In" %>
+<% end %>
 
+<table class="table table-hover"  data-toggle="table">
+      <thead>
+         <tr>
+              <th data-sortable="true">Category</th>
+              <th data-sortable="true">Value</th>
+              <th data-sortable="true">Reason</th>
+              <th data-sortable="true">Time</th>
+         </tr>
+      </thead>
+      <tbody>
+      <% @account.transaction_on_account.each do |tr| %>
+          <tr>
+            <td><%= tr.category.name %></td>
+	    <td><%= tr.value %></td>
+            <td><%= tr.reason %></td>
+            <td><%= tr.date %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+<%= simple_form_for @actual_transaction=TransactionOnAccount.new, :url => account_transaction_on_accounts_path(@account, @actual_transaction) do |f| %>
+ <h3 style="text-align: center;">Add Transaction</h3>
         <div class="form-group">
           <%= f.label :category %>
           <%= f.text_field :category, class: 'form-control', :required => true %>
         </div>
         <div class="form-group">
           <%= f.label :value %>
-          <%= f.number_field :value, class: 'form-control', :step => 'any', :required => true %>
+          <%= f.number_field :value, class: 'form-control', :required => true %>
         </div>
         <div class="form-group">
           <%= f.label :reason %>
           <%= f.text_field :reason, class: 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.label :date %>
-          <%= f.text_field :date, class: 'dp', :data => {:provide => "datepicker"}, :required => true %>
+          <%= f.input :date, :as => :datetime_picker, class: 'form-control', :required => true, :label => 'Date field', input_html: {data: {date_options: {defaultDate: DateTime.now}}}  %>
         </div>
-
         <%= f.submit 'Add new transaction', :class => 'btn btn-success' %>
     <% end %>

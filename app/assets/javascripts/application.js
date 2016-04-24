@@ -16,4 +16,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-table
 //= require locale/bootstrap-table-sk-SK
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
 //= require_tree .
