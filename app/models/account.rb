@@ -9,7 +9,7 @@ class Account < ActiveRecord::Base
  def critic
    if ((transaction_on_account.sum(:value) < critic_value) and notifications)
       # debugger  
-      # NotifyMailer.sample_email(user).deliver
+       NotifyMailer.sample_email(user).deliver
    end
  end 
   
