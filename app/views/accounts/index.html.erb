@@ -1,0 +1,27 @@
+<h1 style="text-align:center;">ACCOUNTS</h1>
+<table class="table table-hover"  data-toggle="table">
+      <thead>
+         <tr>
+              <th data-sortable="true">Name</th>
+              <th data-sortable="true">Critic Value</th>
+              <th data-sortable="true">Notification</th>
+         </tr>
+      </thead>
+      <tbody>
+      <% @accounts.each do |ac| %>
+          <tr>
+            <td><%= link_to "#{ac.name}", ac %></td>
+            <td><%= ac.critic_value %></td>
+            <td><%= ac.notifications ? true : false %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<h2>Add new Account</h2>
+    <%= simple_form_for @account do |f| %>
+        <%= f.input :name %>
+        <%= f.input :critic_value %>
+        <%= f.input :notifications, as: :boolean, checked_value: true, unchecked_value: false %>
+        <%= f.button :submit%>
+    <% end %>
+  </div>
