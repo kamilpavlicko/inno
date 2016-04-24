@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
-  devise_for :users, :controllers => { :sessions => "my_sessions" }
+  devise_for :users
   resources :users
   resources :accounts do
   	resources :transaction_on_accounts
