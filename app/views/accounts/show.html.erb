@@ -1,4 +1,5 @@
 <h1 style="text-align:center;">Actual Account</h1>
+<h3 style="text-align:center;">Overall value: <%= @account.transaction_on_account.sum(:value) %></h3>
     <%= simple_form_for(@account) do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
@@ -9,12 +10,6 @@
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
 
-<%= simple_form_for :asa, :url => url_for(:action => 'index', :controller => 'account_transaction_on_accounts_path'), :method => 'post' do |f|  %>
-  <%= f.input :email %>
-  <%= f.input :as %>
-  <%= f.input :password %>
-  <%= f.button :submit, "Sign In" %>
-<% end %>
 
 <table class="table table-hover"  data-toggle="table">
       <thead>
