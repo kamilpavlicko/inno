@@ -1,5 +1,8 @@
 <h1 style="text-align:center;">Actual Account</h1>
 <h3 style="text-align:center;">Overall value: <%= @account.transaction_on_account.sum(:value) %></h3>
+<% if @account.transaction_on_account.sum(:value) < @account.critic_value %>
+   <h2 style="text-align: center; color: red;">CRITICAL VALUE RAISED</h2>
+<% end %>
     <%= simple_form_for(@account) do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
@@ -10,8 +13,8 @@
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
 
-
-<table class="table table-hover"  data-toggle="table">
+<div style="margin-top: 50px; margin-bottom: 50px;" class="row">
+<table  class="table table-hover"  data-toggle="table">
       <thead>
          <tr>
               <th data-sortable="true">Category</th>
@@ -31,6 +34,7 @@
       <% end %>
       </tbody>
     </table>
+</div>
 
 <%= simple_form_for @actual_transaction=TransactionOnAccount.new, :url => account_transaction_on_accounts_path(@account, @actual_transaction) do |f| %>
  <h3 style="text-align: center;">Add Transaction</h3>

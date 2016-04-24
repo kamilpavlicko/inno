@@ -5,6 +5,7 @@
               <th data-sortable="true">Name</th>
               <th data-sortable="true">Critic Value</th>
               <th data-sortable="true">Notification</th>
+              <th>Actual value</th>
          </tr>
       </thead>
       <tbody>
@@ -13,7 +14,8 @@
             <td><%= link_to "#{ac.name}", ac %></td>
             <td><%= ac.critic_value %></td>
             <td><%= ac.notifications ? true : false %></td>
-          </tr>
+            <td><%= ac.transaction_on_account.sum(:value)%></td> 
+         </tr>
       <% end %>
       </tbody>
     </table>
