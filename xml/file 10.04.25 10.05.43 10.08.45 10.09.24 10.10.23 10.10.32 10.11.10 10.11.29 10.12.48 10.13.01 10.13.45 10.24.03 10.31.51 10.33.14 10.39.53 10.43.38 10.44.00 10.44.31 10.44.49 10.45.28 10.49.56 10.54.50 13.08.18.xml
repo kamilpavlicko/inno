@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transaction>
+    <category>Nakup</category>
+    <user>user@example.com</user>
+    <account>JANO</account>
+    <value>23.23</value>
+    <reason>Billa</reason>
+    <datetime>03/05/2016 09:48</datetime>
+</transaction>

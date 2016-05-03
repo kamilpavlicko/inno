@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
+gem 'filewatcher'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails'
 gem 'autoprefixer-rails' 
